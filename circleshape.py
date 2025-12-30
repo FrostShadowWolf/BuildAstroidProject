@@ -16,10 +16,12 @@ class CircleShape(pygame.sprite.Sprite):
         self.radius = radius
 
     def draw(self, screen):
-        # must override
         pygame.draw.polygon(screen, "white", self.triangle(), constants.LINE_WIDTH)
         
 
     def update(self, dt):
-        # must override
-        pass
+        keys = pygame.key.get_pressed()
+        if keys[pygame.K_a]:
+            self.rotate(-dt)
+        if keys[pygame.K_d]:
+            self.rotate(dt)
