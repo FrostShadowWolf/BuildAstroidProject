@@ -1,6 +1,6 @@
 import pygame
 import constants
-import player
+#import player
 
 # Base class for game objects
 class CircleShape(pygame.sprite.Sprite):
@@ -16,16 +16,12 @@ class CircleShape(pygame.sprite.Sprite):
         self.radius = radius
 
     def draw(self, screen):
-        pygame.draw.polygon(screen, "white", self.triangle(), constants.LINE_WIDTH)
+        pass
         
 
     def update(self, dt):
-        keys = pygame.key.get_pressed()
-        if keys[pygame.K_a]:
-            self.rotate(-dt)
-        if keys[pygame.K_d]:
-            self.rotate(dt)
-        if keys[pygame.K_w]:
-            self.move(dt)
-        if keys[pygame.K_s]:
-            self.move(-dt)
+        pass
+
+    def collides_with(self, other):
+        distance = self.position.distance_to(other.position)
+        return distance <= self.radius + other.radius
